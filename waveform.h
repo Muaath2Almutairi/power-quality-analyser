@@ -76,3 +76,4 @@ PhaseResult analyse_phase(const WaveformSample *samples, int n,
                           char label, int field_offset);
 
 #endif /* WAVEFORM_H */
+// Added struct documentation

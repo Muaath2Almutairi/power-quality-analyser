@@ -213,3 +213,4 @@ int write_report(const char *output_path,
     fclose(fp);
     return 1;
 }
+// Documented CSV loader

@@ -214,3 +214,4 @@ int write_report(const char *output_path,
     return 1;
 }
 // Documented CSV loader
+// Report generation logic completed

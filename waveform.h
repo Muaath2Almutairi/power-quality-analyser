@@ -77,3 +77,4 @@ PhaseResult analyse_phase(const WaveformSample *samples, int n,
 
 #endif /* WAVEFORM_H */
 // Added struct documentation
+// Extra merit flags added

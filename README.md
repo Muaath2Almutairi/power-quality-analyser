@@ -110,3 +110,7 @@ Report written to 'results.txt'.
 - **`offsetof()`-based field selection**: Analysis functions accept a `field_offset` parameter (obtained with `offsetof()`) to locate the correct voltage field via pointer arithmetic. This means `compute_rms()`, `compute_dc_offset()`, etc. work on any phase without duplication.
 - **Dynamic allocation with realloc growth**: The CSV loader starts at 1 024 slots and doubles capacity when needed. The final pointer is passed to `free()` before `main()` returns.
 - **Separation of concerns**: `main.c` orchestrates; `waveform.c` analyses; `io.c` handles all file operations. No analysis logic leaks into I/O code or vice versa.
+
+
+## GitHub Repository
+https://github.com/Muaath2Almutairi/power-quality-analyser

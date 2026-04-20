@@ -4,7 +4,7 @@ Electrical and Electronic Engineering | University of the West of England | 2025
 
 ## What this program does
 
-This command-line C program reads a power quality sensor log (CSV), computes key waveform metrics for each of three phases (A, B, C) of a 3-phase 50 Hz industrial supply, and writes a structured report to `results.txt`.
+This is a command-line C program for my coursework. It reads the power quality sensor log (CSV), calculates the required waveform metrics for Phase A, B, and C, and writes the final report to `results.txt`.
 
 Metrics computed per phase:
 - RMS voltage (compared against EN 50160 ±10% tolerance: 207–253 V)
@@ -25,7 +25,7 @@ Dataset-wide statistics also reported:
 
 ```
 power_quality_analyser/
-├── main.c          Entry point — argument handling and orchestration only
+├── main.c          Main file that handles command line arguments and calls the functions
 ├── waveform.c      All analysis functions (RMS, peak-to-peak, DC offset, …)
 ├── waveform.h      WaveformSample struct, PhaseResult struct, function prototypes
 ├── io.c            CSV loader and report writer
@@ -86,7 +86,7 @@ Loaded 1000 samples from 'power_quality_log.csv'.
   Mean Frequency  : 50.000xxx Hz
   Mean PF         : 0.9560
   Mean THD        : 2.0xxx %
-  Total clipped   : 20 samples across all phases
+  Total clipped   : 60 samples across all phases
 
 Report written to 'results.txt'.
 ```
@@ -106,10 +106,10 @@ Report written to 'results.txt'.
 
 ## Key design decisions
 
-- **Single struct, eight fields**: All 8 CSV columns live in one `WaveformSample`. This avoids synchronisation bugs between parallel arrays and maps directly to the CSV row layout.
-- **`offsetof()`-based field selection**: Analysis functions accept a `field_offset` parameter (obtained with `offsetof()`) to locate the correct voltage field via pointer arithmetic. This means `compute_rms()`, `compute_dc_offset()`, etc. work on any phase without duplication.
-- **Dynamic allocation with realloc growth**: The CSV loader starts at 1 024 slots and doubles capacity when needed. The final pointer is passed to `free()` before `main()` returns.
-- **Separation of concerns**: `main.c` orchestrates; `waveform.c` analyses; `io.c` handles all file operations. No analysis logic leaks into I/O code or vice versa.
+- **One big struct**: I put all 8 CSV columns into a single `WaveformSample` struct because it's much easier to keep track of rows than using 8 separate arrays.
+- **`offsetof()` trick**: Instead of copy-pasting the RMS and math functions three times, I use `offsetof()` to pass the exact byte location of the column I want to process.
+- **Dynamic memory**: The program starts by allocating memory for 1024 rows. If the CSV is bigger than that, it doubles the size using `realloc`. I free the memory at the end to prevent leaks.
+- **Organised files**: `main.c` runs the program, `waveform.c` does the math, and `io.c` handles the files. Keeping them separate makes it easier to read.
 
 
 ## GitHub Repository

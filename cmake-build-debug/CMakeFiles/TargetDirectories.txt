@@ -1,3 +1,0 @@
-C:/Users/User/OneDrive/Desktop/C_Power Quality Waveform Analyser/cmake-build-debug/CMakeFiles/analyser.dir
-C:/Users/User/OneDrive/Desktop/C_Power Quality Waveform Analyser/cmake-build-debug/CMakeFiles/edit_cache.dir
-C:/Users/User/OneDrive/Desktop/C_Power Quality Waveform Analyser/cmake-build-debug/CMakeFiles/rebuild_cache.dir

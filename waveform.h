@@ -36,8 +36,8 @@ typedef struct {
 #define TOLERANCE_HIGH    253.0
 
 // flags for the merit extension
-#define FLAG_CLIPPING     (1u << 0)
-#define FLAG_OUT_OF_TOL   (1u << 1)
+#define FLAG_CLIPPING     1
+#define FLAG_OUT_OF_TOL   2
 
 // functions implemented in waveform.c
 

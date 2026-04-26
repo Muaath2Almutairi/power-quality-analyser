@@ -59,10 +59,10 @@ int main(int argc, char *argv[])
                r->rms,
                r->compliant ? "COMPLIANT" : "NON-COMPLIANT");
         printf("Peak-to-peak    : %.4f V\n",  r->peak_to_peak);
-        printf("DC offset       : %+.6f V\n", r->dc_offset);
+        printf("DC offset       : %f V\n", r->dc_offset);
         printf("Clipped samples : %d\n",       r->clipped_count);
         printf("Std deviation   : %.4f V\n",   r->std_dev);
-        printf("Status flags    : 0x%02X\n\n", (unsigned)r->status_flags);
+        printf("Status flags    : %d\n\n", r->status_flags);
     }
 
     int total_clipped = results[0].clipped_count
@@ -71,7 +71,7 @@ int main(int argc, char *argv[])
 
     printf("Mean Frequency  : %.6f Hz\n", mean_frequency(samples, n));
     printf("Mean PF         : %.4f\n",    mean_power_factor(samples, n));
-    printf("Mean THD        : %.4f %%\n", mean_thd(samples, n));
+    printf("Mean THD        : %f %%\n", mean_thd(samples, n));
     printf("Total clipped   : %d samples across all phases\n\n",
            total_clipped);
 

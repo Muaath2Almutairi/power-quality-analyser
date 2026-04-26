@@ -106,7 +106,7 @@ static void print_phase_block(FILE *fp, const PhaseResult *r)
     fprintf(fp, "\n");
     fprintf(fp, "RMS Voltage         : %8.4f V\n", r->rms);
     fprintf(fp, "Peak-to-Peak        : %8.4f V\n", r->peak_to_peak);
-    fprintf(fp, "DC Offset           : %+.6f V\n", r->dc_offset);
+    fprintf(fp, "DC Offset           : %f V\n", r->dc_offset);
     fprintf(fp, "Clipped Samples     : %d\n",      r->clipped_count);
     fprintf(fp, "Standard Deviation  : %8.4f V\n", r->std_dev);
 
@@ -120,7 +120,7 @@ static void print_phase_block(FILE *fp, const PhaseResult *r)
     }
 
     /* Bitwise status flags (Merit extension) */
-    fprintf(fp, "Status Flags (hex)  : 0x%02X", (unsigned)r->status_flags);
+    fprintf(fp, "Status Flags        : %d", r->status_flags);
     if (r->status_flags == 0) {
         fprintf(fp, "OK — no anomalies\n");
     } else {
@@ -173,7 +173,7 @@ int write_report(const char *output_path,
             mean_frequency(samples, n));
     fprintf(fp, "Mean Power Factor   : %.4f        (nominal 0.95)\n",
             mean_power_factor(samples, n));
-    fprintf(fp, "Mean THD            : %.4f %%    "
+    fprintf(fp, "Mean THD            : %f %%    "
                 "(EN 50160 limit: 8%%)\n",
             mean_thd(samples, n));
 

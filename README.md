@@ -75,19 +75,6 @@ gcc -std=c99 -Wall -Wextra main.c waveform.c io.c -lm -o analyser
 ```
 Loaded 1000 samples from 'power_quality_log.csv'.
 
-  Phase A:
-    RMS voltage     : 229.xxxx V  [COMPLIANT]
-    Peak-to-peak    : 650.xxxx V
-    DC offset       : +0.000000 V
-    Clipped samples : N
-    Std deviation   : xxx.xxxx V
-    Status flags    : 0x01
-
-  Mean Frequency  : 50.000xxx Hz
-  Mean PF         : 0.9560
-  Mean THD        : 2.0xxx %
-  Total clipped   : 60 samples across all phases
-
 Report written to 'results.txt'.
 ```
 

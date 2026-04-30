@@ -38,7 +38,7 @@ power_quality_analyser/
 
 ## How to compile and run
 
-### Option 1 — CLion (recommended IDE)
+### Option 1 — CLion 
 
 1. Open CLion and choose **File → Open**, then select the `power_quality_analyser` folder.
 2. CLion detects `CMakeLists.txt` and configures the project automatically.
@@ -49,24 +49,14 @@ power_quality_analyser/
    ```
 5. Click **Run**.
 
-### Option 2 — Command-line with `cmake`
 
-```bash
-cd power_quality_analyser
-mkdir build && cd build
-cmake ..
-make
-./analyser ../power_quality_log.csv
-```
 
-### Option 3 — Single `gcc` command (no CMake)
+### Option 2 — Single `gcc` command
 
 ```bash
 gcc -std=c99 -Wall -Wextra main.c waveform.c io.c -lm -o analyser
 ./analyser power_quality_log.csv
 ```
-
-> **Note:** The `-lm` flag is required because the program uses `sqrt()` and `fabs()` from `<math.h>`.
 
 ---
 

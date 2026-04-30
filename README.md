@@ -70,11 +70,11 @@ gcc -std=c99 -Wall -Wextra main.c waveform.c io.c -lm -o analyser
 
 ---
 
-## Expected output (excerpt)
+## Expected output 
 
 ```
 Loaded 1000 samples from 'power_quality_log.csv'.
-
+Calculate the Result.
 Report written to 'results.txt'.
 ```
 
